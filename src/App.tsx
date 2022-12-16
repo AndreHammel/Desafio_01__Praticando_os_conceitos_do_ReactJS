@@ -48,6 +48,17 @@ export function App() {
     setTasks(changeStatusTask);
   }
 
+  function finishedTasks() {
+    const amountTotalTasks = tasks.length;
+    const amountTasksFinished = tasks.reduce((acc, curr) => {
+      if (curr.status) {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+    return `${amountTasksFinished} de ${amountTotalTasks}`;
+  }
+
   return (
     <div>
       <Header />
@@ -63,11 +74,11 @@ export function App() {
           <div className={styles.headerTaskContainer}>
             <div className={styles.infoTasks}>
               <span id="taskOnBoard">Tarefas criadas</span>
-              <div>0</div>
+              <div>{tasks.length}</div>
             </div>
             <div className={styles.infoTasks}>
               <span id="finishedTask">Concluídas</span>
-              <div>0</div>
+              <div>{finishedTasks()}</div>
             </div>
           </div>
           <div className={styles.tasks}>
