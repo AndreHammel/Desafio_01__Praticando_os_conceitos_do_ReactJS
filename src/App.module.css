@@ -122,15 +122,12 @@
   margin-top: 0.75rem;
 }
 
-.task > button {
+.task button {
   width: 24px;
   height: 24px;
   background-color: transparent;
   border: none;
-  border-radius: 2px;
   cursor: pointer;
-  color: var(--gray-300);
-  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,27 +135,47 @@
   transition: background-color 0.2s;
 }
 
-.task > button:hover {
+.buttonDelete {
+  border-radius: 2px;
+  color: var(--gray-300);
+  margin-left: 2rem;
+}
+
+.buttonDelete:hover {
   color: var(--danger);
   background-color: var(--gray-400);
+}
+
+.buttonChecked {
+  margin-right: 1rem;
+}
+
+.buttonChecked:focus {
+  outline: transparent;
+  box-shadow: none;
 }
 
 .withLineThrough {
   text-decoration: line-through;
 }
 
-.unchecked {
-  color: var(--blue) !important;
+.buttonChecked.checked svg {
+  color: var(--purple-dark);
+  transition: all 0.2s;
 }
 
-.unchecked:hover {
-  color: var(--blue-dark) !important;
+.buttonChecked.checked svg:hover {
+  color: var(--purple);
 }
 
-.checked {
-  color: var(--purple-dark) !important;
+.buttonChecked svg {
+  color: var(--blue);
+  transition: all 0.2s;
 }
 
-.checked:hover {
-  color: var(--purple) !important;
+.buttonChecked svg:hover {
+  color: var(--blue-dark);
+  background-color: var(--blue-dark-80);
+  border: none;
+  border-radius: 100%;
 }

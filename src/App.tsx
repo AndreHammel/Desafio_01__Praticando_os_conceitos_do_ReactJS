@@ -1,13 +1,12 @@
-// ts-nocheck;
+import React from "react";
 import { Header } from "./components/Header/Header";
 import "./global.css";
 import styles from "./App.module.css";
 import plusCircle from "./assets/plusCircle.svg";
 import { Trash } from "phosphor-react";
 import { useState } from "react";
-import { Checkbox } from "@mui/material";
-import checked from "./assets/checked.svg";
-import unchecked from "./assets/unchecked.svg";
+import { Checked } from "./assets/Checked";
+import { Unchecked } from "./assets/Unchecked";
 
 let mockTasks = [
   {
@@ -38,21 +37,15 @@ export function App() {
     setTasks(removedTask);
   }
 
-  function handleCheck(event: any) {
-    const changeStatusTask = tasks.map((task) =>
-      task.id === Number(event.target.value)
-        ? { ...task, status: event.target.checked }
-        : task
-    );
-    setTasks(changeStatusTask);
-  }
-
-  function isChecked(status: boolean) {
-    return status ? "checked" : "unchecked";
-  }
-
   function passLineThrough(status: boolean) {
     return status ? "withLineThrough" : "withoutLineThrough";
+  }
+
+  function handleCheck(id: number) {
+    const changeStatusTask = tasks.map((task) =>
+      task.id === id ? { ...task, status: !task.status } : task
+    );
+    setTasks(changeStatusTask);
   }
 
   return (
@@ -80,28 +73,21 @@ export function App() {
           <div className={styles.tasks}>
             {tasks.map(({ id, content, status }) => (
               <div key={id} className={styles.task}>
-                <div className={styles.containerCheckbox}>
-                  {/* <input
-                    id="checkbox"
-                    type="checkbox"
-                    onChange={handleCheck}
-                    value={id}
-                    className={styles[isChecked(status)]}
-                  /> */}
-                  <Checkbox
-                    icon={<img src={unchecked} />}
-                    checkedIcon={<img src={checked} />}
-                    onChange={handleCheck}
-                    value={id}
-                    className={styles[isChecked(status)]}
-                    disableRipple
-                  />
-                  <label htmlFor="checkbox"></label>
-                </div>
+                <button
+                  onClick={() => handleCheck(id)}
+                  className={`${styles.buttonChecked} ${
+                    styles[!!status ? "checked" : ""]
+                  }`}
+                >
+                  {status ? <Checked /> : <Unchecked />}
+                </button>
                 <span className={styles[passLineThrough(status)]}>
                   {content}
                 </span>
-                <button onClick={() => handleDeleteTask(id)}>
+                <button
+                  onClick={() => handleDeleteTask(id)}
+                  className={styles.buttonDelete}
+                >
                   <Trash size={16} />
                 </button>
               </div>
