@@ -9,7 +9,8 @@
   --purple: #8284fa;
   --purple-dark: #5e60ce;
   --blue: #4ea8de;
-  --blue-dark: #1e6f9f;
+  --blue-dark: rgb(30, 111, 159);
+  --blue-dark-80: rgba(30, 111, 159, 0.2);
   --danger: #e25858;
 }
 

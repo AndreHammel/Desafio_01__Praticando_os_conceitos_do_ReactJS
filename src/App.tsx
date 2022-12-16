@@ -1,9 +1,60 @@
+// ts-nocheck;
 import { Header } from "./components/Header/Header";
 import "./global.css";
 import styles from "./App.module.css";
 import plusCircle from "./assets/plusCircle.svg";
+import { Trash } from "phosphor-react";
+import { useState } from "react";
+import { Checkbox } from "@mui/material";
+import checked from "./assets/checked.svg";
+import unchecked from "./assets/unchecked.svg";
+
+let mockTasks = [
+  {
+    id: 1,
+    content:
+      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    status: false,
+  },
+  {
+    id: 2,
+    content:
+      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    status: false,
+  },
+  {
+    id: 3,
+    content:
+      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    status: false,
+  },
+];
 
 export function App() {
+  const [tasks, setTasks] = useState(mockTasks);
+
+  function handleDeleteTask(id: number) {
+    const removedTask = tasks.filter((task) => task.id !== id);
+    setTasks(removedTask);
+  }
+
+  function handleCheck(event: any) {
+    const changeStatusTask = tasks.map((task) =>
+      task.id === Number(event.target.value)
+        ? { ...task, status: event.target.checked }
+        : task
+    );
+    setTasks(changeStatusTask);
+  }
+
+  function isChecked(status: boolean) {
+    return status ? "checked" : "unchecked";
+  }
+
+  function passLineThrough(status: boolean) {
+    return status ? "withLineThrough" : "withoutLineThrough";
+  }
+
   return (
     <div>
       <Header />
@@ -26,7 +77,36 @@ export function App() {
               <div>0</div>
             </div>
           </div>
-          <div className={styles.tasks}>CONTAINER TASKS</div>
+          <div className={styles.tasks}>
+            {tasks.map(({ id, content, status }) => (
+              <div key={id} className={styles.task}>
+                <div className={styles.containerCheckbox}>
+                  {/* <input
+                    id="checkbox"
+                    type="checkbox"
+                    onChange={handleCheck}
+                    value={id}
+                    className={styles[isChecked(status)]}
+                  /> */}
+                  <Checkbox
+                    icon={<img src={unchecked} />}
+                    checkedIcon={<img src={checked} />}
+                    onChange={handleCheck}
+                    value={id}
+                    className={styles[isChecked(status)]}
+                    disableRipple
+                  />
+                  <label htmlFor="checkbox"></label>
+                </div>
+                <span className={styles[passLineThrough(status)]}>
+                  {content}
+                </span>
+                <button onClick={() => handleDeleteTask(id)}>
+                  <Trash size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

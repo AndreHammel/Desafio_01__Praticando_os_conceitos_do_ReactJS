@@ -16,15 +16,18 @@
   border-radius: 8px;
   background-color: var(--gray-500);
   padding: 1rem;
+  color: var(--gray-100);
+  font-size: 1rem;
 }
 
 .form input::placeholder {
   color: var(--gray-300);
+  font-size: 1rem;
 }
 
 .form button {
   height: 3.375rem;
-  width: 90px;
+  width: 93.09px;
   border: none;
   border-radius: 8px;
   background-color: var(--blue-dark);
@@ -38,10 +41,23 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+
+  transition: all 0.8s;
+}
+
+.form button:hover {
+  background-color: var(--blue);
+  width: 90px;
 }
 
 .form button > img {
   height: 1rem;
+  transform: rotate(30deg);
+  transition: all 0.8s;
+}
+
+.form button:hover img {
+  transform: rotate(0deg);
 }
 
 .taskContainer {
@@ -88,4 +104,61 @@
   margin-top: 24px;
   border-radius: 8px;
   border-top: 1px solid var(--gray-400);
+}
+
+.task {
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--gray-500);
+  padding: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-100);
+  font-weight: normal;
+}
+
+.task + .task {
+  margin-top: 0.75rem;
+}
+
+.task > button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--gray-300);
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.2s;
+}
+
+.task > button:hover {
+  color: var(--danger);
+  background-color: var(--gray-400);
+}
+
+.withLineThrough {
+  text-decoration: line-through;
+}
+
+.unchecked {
+  color: var(--blue) !important;
+}
+
+.unchecked:hover {
+  color: var(--blue-dark) !important;
+}
+
+.checked {
+  color: var(--purple-dark) !important;
+}
+
+.checked:hover {
+  color: var(--purple) !important;
 }
