@@ -1,4 +1,4 @@
-# ![banner_desafio](https://user-images.githubusercontent.com/54488551/208247525-b07a38c9-c42d-450d-9ccf-ef23a65bbe0d.png)
+<img align="center"  src="https://user-images.githubusercontent.com/54488551/208247525-b07a38c9-c42d-450d-9ccf-ef23a65bbe0d.png" />
 
 # Tabela de conteúdos
 
@@ -7,7 +7,7 @@
 - [Tecnologias Utilizada](#tecnologias-utilizadas)
 - [Motivação & Objetivos](#Motivação--Objetivos)
 - [Interface](#Interface)
-- [Como instalar](#como-instalar)
+- [Download](#Download)
 - [Links do deploy da aplicação](#Links-do-deploy-da-aplicação)
 - [Lista de dependências](#lista-de-dependencias)
 
@@ -25,7 +25,7 @@
 
 ## Motivação & Objetivos
 
-Primeiro desafio da trilha de React, onde é aplicado o conceitos de componentização da aplicação, estado, imutabilidade, tipagem com Typecript
+Primeiro desafio da trilha de React, onde é aplicado o conceitos de componentização da aplicação, estado, imutabilidade, tipagem com Typecript.
 
 ## Interface
 
