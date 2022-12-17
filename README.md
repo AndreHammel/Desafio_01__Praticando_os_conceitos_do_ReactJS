@@ -1,4 +1,6 @@
-<img align="center"  src="https://user-images.githubusercontent.com/54488551/208247525-b07a38c9-c42d-450d-9ccf-ef23a65bbe0d.png" />
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/54488551/208247525-b07a38c9-c42d-450d-9ccf-ef23a65bbe0d.png" />
+</p>
 
 # Tabela de conteúdos
 
