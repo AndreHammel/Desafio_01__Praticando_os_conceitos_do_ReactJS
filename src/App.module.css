@@ -116,6 +116,7 @@
   font-size: 0.875rem;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   color: var(--gray-100);
   font-weight: normal;
 }
@@ -124,7 +125,12 @@
   margin-top: 0.75rem;
 }
 
-.task button {
+.task span {
+  width: 100%;
+  text-align: left;
+}
+
+.task > button {
   width: 24px;
   height: 24px;
   background-color: transparent;

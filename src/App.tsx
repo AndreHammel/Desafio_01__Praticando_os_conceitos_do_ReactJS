@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { Header } from "./components/Header/Header";
 import "./global.css";
 import styles from "./App.module.css";
@@ -7,43 +7,50 @@ import { Trash } from "phosphor-react";
 import { useState } from "react";
 import { Checked } from "./assets/Checked";
 import { Unchecked } from "./assets/Unchecked";
+import { v4 as uuidV4 } from "uuid";
 
-let mockTasks = [
-  {
-    id: 1,
-    content:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    status: false,
-  },
-  {
-    id: 2,
-    content:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    status: false,
-  },
-  {
-    id: 3,
-    content:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    status: false,
-  },
-];
+// let mockTasks = [
+//   {
+//     id: 1,
+//     content:
+//       "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+//     done: false,
+//   },
+//   {
+//     id: 2,
+//     content:
+//       "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+//     done: false,
+//   },
+//   {
+//     id: 3,
+//     content:
+//       "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+//     done: false,
+//   },
+// ];
+
+interface ITask {
+  id: string;
+  content: string;
+  done: boolean;
+}
 
 export function App() {
-  const [tasks, setTasks] = useState(mockTasks);
+  const [tasks, setTasks] = useState<ITask[]>([]);
 
-  function handleDeleteTask(id: number) {
+  function handleDeleteTask(id: string) {
     const removedTask = tasks.filter((task) => task.id !== id);
     setTasks(removedTask);
   }
 
-  function passLineThrough(status: boolean) {
-    return status ? "withLineThrough" : "withoutLineThrough";
+  function passLineThrough(done: boolean) {
+    return done ? "withLineThrough" : "withoutLineThrough";
   }
 
-  function handleCheck(id: number) {
+  function handleCheck(id: string) {
     const changeStatusTask = tasks.map((task) =>
-      task.id === id ? { ...task, status: !task.status } : task
+      task.id === id ? { ...task, done: !task.done } : task
     );
     setTasks(changeStatusTask);
   }
@@ -51,7 +58,7 @@ export function App() {
   function finishedTasks() {
     const amountTotalTasks = tasks.length;
     const amountTasksFinished = tasks.reduce((acc, curr) => {
-      if (curr.status) {
+      if (curr.done) {
         return acc + 1;
       }
       return acc;
@@ -59,12 +66,23 @@ export function App() {
     return `${amountTasksFinished} de ${amountTotalTasks}`;
   }
 
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const target = event.currentTarget;
+    const newTask: ITask = {
+      id: uuidV4(),
+      content: target.taskInput.value,
+      done: false,
+    };
+    setTasks((prev: ITask[]) => [...prev, newTask]);
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.container}>
-        <form action="" className={styles.form}>
-          <input placeholder="Adicione um nova tarefa" />
+        <form action="" className={styles.form} onSubmit={handleSubmit}>
+          <input placeholder="Adicione um nova tarefa" name="taskInput" />
           <button>
             <span>Criar</span>
             <img src={plusCircle} />
@@ -82,19 +100,17 @@ export function App() {
             </div>
           </div>
           <div className={styles.tasks}>
-            {tasks.map(({ id, content, status }) => (
+            {tasks.map(({ id, content, done }) => (
               <div key={id} className={styles.task}>
                 <button
                   onClick={() => handleCheck(id)}
                   className={`${styles.buttonChecked} ${
-                    styles[!!status ? "checked" : ""]
+                    styles[!!done ? "checked" : ""]
                   }`}
                 >
-                  {status ? <Checked /> : <Unchecked />}
+                  {done ? <Checked /> : <Unchecked />}
                 </button>
-                <span className={styles[passLineThrough(status)]}>
-                  {content}
-                </span>
+                <span className={styles[passLineThrough(done)]}>{content}</span>
                 <button
                   onClick={() => handleDeleteTask(id)}
                   className={styles.buttonDelete}
