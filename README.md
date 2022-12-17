@@ -60,13 +60,13 @@ yarn
 ### Iniciar a aplicação
 
 ```sh
-npm start
+npm run dev
 ```
 
 ou
 
 ```sh
-yarn start
+yarn dev
 ```
 
 ## Lista de dependências
