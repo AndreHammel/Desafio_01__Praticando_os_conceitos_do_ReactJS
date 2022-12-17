@@ -1,0 +1,26 @@
+.noTaskInfo {
+  width: 100%;
+  height: 244px;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noTaskInfo img {
+  width: 3.5rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.noTaskInfo p {
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: center;
+}
+
+.noTaskInfo p:first-of-type {
+  font-weight: 700;
+}
