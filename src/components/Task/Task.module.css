@@ -1,0 +1,86 @@
+.tasks {
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 8px;
+  border-top: 1px solid var(--gray-400);
+}
+
+.task {
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--gray-500);
+  padding: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--gray-100);
+  font-weight: normal;
+}
+
+.task + .task {
+  margin-top: 0.75rem;
+}
+
+.task span {
+  width: 100%;
+  text-align: left;
+}
+
+.task > button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.2s;
+}
+
+.buttonDelete {
+  border-radius: 2px;
+  color: var(--gray-300);
+  margin-left: 2rem;
+}
+
+.buttonDelete:hover {
+  color: var(--danger);
+  background-color: var(--gray-400);
+}
+
+.buttonChecked {
+  margin-right: 1rem;
+}
+
+.buttonChecked:focus {
+  outline: transparent;
+  box-shadow: none;
+}
+
+.withLineThrough {
+  text-decoration: line-through;
+}
+
+.buttonChecked.checked svg {
+  color: var(--purple-dark);
+  transition: all 0.2s;
+}
+
+.buttonChecked.checked svg:hover {
+  color: var(--purple);
+}
+
+.buttonChecked svg {
+  color: var(--blue);
+  transition: all 0.2s;
+}
+
+.buttonChecked svg:hover {
+  color: var(--blue-dark);
+  background-color: var(--blue-dark-80);
+  border: none;
+  border-radius: 100%;
+}
