@@ -1,4 +1,4 @@
-# ![neo-way](https://user-images.githubusercontent.com/54488551/161454111-58794b8a-5d48-4178-af60-207d1652f631.jpg)
+# ![banner_desafio](https://user-images.githubusercontent.com/54488551/208247525-b07a38c9-c42d-450d-9ccf-ef23a65bbe0d.png)
 
 # Tabela de conteúdos
 
@@ -29,7 +29,7 @@ Primeiro desafio da trilha de React, onde é aplicado o conceitos de componentiz
 
 ## Interface
 
-![new-print]()
+![tela_desafio](https://user-images.githubusercontent.com/54488551/208247529-dacc226e-4448-4319-bc62-0c4afde427cd.png)
 
 ## Download
 
@@ -69,13 +69,5 @@ yarn start
 
 ## Lista de dependências
 
-- @mui/material: 5.4.1
-- axios: 0.25.0
-- prop-types: 15.8.1
-- react: 17.0.2
-- react-dom: 17.0.2
-- react-icons: 4.3.1
-- react-scripts: 5.0.0
-- styled-components: 5.3.3
-
-Verificar da cobertura
+- phosphor-react: 1.4.1
+- uuid: 9.0.0
