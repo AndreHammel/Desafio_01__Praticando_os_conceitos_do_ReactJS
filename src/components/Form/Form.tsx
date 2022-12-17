@@ -1,6 +1,6 @@
 import styles from "./Form.module.css";
 import plusCircle from "../../assets/plusCircle.svg";
-import { FormEvent, useState } from "react";
+import { FormEvent, InvalidEvent, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 import { TaskContainer } from "../TaskContainer/TaskContainer";
 
@@ -36,10 +36,19 @@ export function Form() {
     setTasks(removedTask);
   }
 
+  function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity("Esse campo é obrigatório!");
+  }
+
   return (
     <>
       <form action="" className={styles.form} onSubmit={handleSubmit}>
-        <input placeholder="Adicione um nova tarefa" name="taskInput" />
+        <input
+          placeholder="Adicione um nova tarefa"
+          name="taskInput"
+          onInvalid={handleNewTaskInvalid}
+          required
+        />
         <button>
           <span>Criar</span>
           <img src={plusCircle} />
